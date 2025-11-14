@@ -18,10 +18,14 @@ useEffect(() => {
     .then((data) => setToys(data));
 }, []);
 
+function handleAddToy(newToy) {
+  setToys((toys) => [...toys, newToy]);
+}
+
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm onAddToy={handleAddToy}/> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
