@@ -25,6 +25,17 @@ function handleAddToy(newToy) {
     setToys((toys) => toys.filter((toy) => toy.id !== id));
   }
 
+  function handleUpdateToy(updatedToy) {
+  setToys((toys) =>
+    toys.map((toy) => {
+      if (toy.id === updatedToy.id) {
+        return updatedToy;
+      } else {
+        return toy;
+      }
+    })
+  );
+}
   return (
     <>
       <Header />
@@ -32,7 +43,7 @@ function handleAddToy(newToy) {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} onDeleteToy={handleDeleteToy}/>
+      <ToyContainer toys={toys} onDeleteToy={handleDeleteToy} onUpdateToy={handleUpdateToy} />
     </>
   );
 }
